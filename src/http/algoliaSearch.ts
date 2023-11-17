@@ -19,11 +19,11 @@ const defaultSearchOptions = {
   ]
 }
 
-async function searchPackages (
+const searchPackages = async (
   query: string,
   page: number = 0,
   hitsPerPage: number = 10
-): Promise<{ hits: IPackageResult[] }> {
+): Promise<{ hits: IPackageResult[] }> => {
   const options: ISearchOptions = { ...defaultSearchOptions, page, hitsPerPage }
 
   try {
