@@ -1,9 +1,16 @@
 <template>
-  <h1>Base</h1>
+  <v-container>
+    <packages-table />
+  </v-container>
 </template>
 
 <script lang="ts">
+import PackagesTable from '@/components/tables/PackagesTable'
+
 export default {
-  name: 'HomePage'
-}
+  name: 'HomePage',
+  components: {
+    PackagesTable
+  }
+};
 </script>
