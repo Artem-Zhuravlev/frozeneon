@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from './axiosInstance';
+import { AxiosResponse } from 'axios';
 
 /**
  * Get npm packages list.
