@@ -41,12 +41,18 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { getPackagesList } from '@/http/packages'
+import { ref, watch } from 'vue';
 
   export default {
     name: 'AppBar',
     setup () {
       const searchResult = ref('');
+
+      watch(searchResult, async (value) => {
+        const res = await getPackagesList(value);
+        console.log(res);
+      })
 
       return {
         searchResult
