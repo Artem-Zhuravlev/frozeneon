@@ -28,7 +28,7 @@
       cols="7"
     >
       <v-text-field
-        v-model="searchResult"
+        v-model="store.searchResult"
         density="compact"
         variant="solo"
         label="Search packages"
@@ -41,22 +41,21 @@
 </template>
 
 <script lang="ts">
-import { getPackagesList } from '@/http/packages'
-import { ref, watch } from 'vue';
+import { watch } from 'vue';
+import { usePackagesStore } from '@/store/packages'
 
-  export default {
-    name: 'AppBar',
-    setup () {
-      const searchResult = ref('');
+export default {
+  name: 'AppBar',
+  setup () {
+    const store = usePackagesStore();
 
-      watch(searchResult, async (value) => {
-        const res = await getPackagesList(value);
-        console.log(res);
-      })
+    watch(() => store.searchResult, async () => {
+      await store.getPackages();
+    });
 
-      return {
-        searchResult
-      }
+    return {
+      store
     }
   }
+}
 </script>

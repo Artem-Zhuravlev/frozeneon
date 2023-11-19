@@ -12,7 +12,7 @@ import { AxiosResponse } from 'axios';
 export const getPackagesList = async (text: string): Promise<AxiosResponse> => {
   try {
     const response: AxiosResponse = await axios.get(`/search`, { params: { text } });
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error fetching package information:', error);
     throw error;
