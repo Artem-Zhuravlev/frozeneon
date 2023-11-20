@@ -43,10 +43,11 @@
 <script lang="ts" setup>
 import { watch } from 'vue';
 import { usePackagesStore } from '@/store/packages';
+import { debounce } from '@/utlis/debounce';
 
 const store = usePackagesStore();
 
-watch(() => store.searchResult, async () => {
+watch(() => store.searchResult, debounce(async () => {
   await store.getPackages();
-});
+}));
 </script>
