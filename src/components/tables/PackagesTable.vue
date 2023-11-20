@@ -2,7 +2,9 @@
   <v-data-table
     :loading="store.isLoading"
     :items="tableData"
+    :headers="headers"
     :items-per-page="10"
+    hover
   >
     <template
       v-slot:item="{ item }"
@@ -34,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { usePackagesStore } from '@/store/packages';
 import { IPackage } from '@/types/IPackage';
 import { ITableRow } from '@/types/ITableRow';
@@ -51,7 +53,25 @@ const tableData = computed<ITableRow[]>(() => {
   }));
 });
 
+const headers = ref([
+  { text: 'Date', value: 'date', width: '20%'},
+  { text: 'Name', value: 'name', width: '20%' },
+  { text: 'Version', value: 'version', width: '20%' },
+  { text: 'Description', value: 'description', width: '40%' },
+])
+
 onMounted(async() => {
   await store.getPackages();
 })
 </script>
+
+
+<style lang="scss" scoped>
+:deep(.v-table) {
+  overflow-x: auto;
+}
+
+:deep(table) {
+  min-width: 650px;
+}
+</style>
