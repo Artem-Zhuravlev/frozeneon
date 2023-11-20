@@ -11,14 +11,15 @@ export interface IPackage {
       repository?: string;
       bugs?: string;
     };
-    author?: {
-      name?: string;
-      email?: string;
+    author: {
+      name: string;
+      email: string;
     };
     publisher?: {
       username?: string;
       email?: string;
     };
+    keywords: string[],
     maintainers?: Array<{
       username?: string;
       email?: string;
