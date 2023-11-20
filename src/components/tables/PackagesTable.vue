@@ -54,10 +54,10 @@ const tableData = computed<ITableRow[]>(() => {
 });
 
 const headers = ref([
-  { text: 'Date', value: 'date', width: '20%'},
-  { text: 'Name', value: 'name', width: '20%' },
-  { text: 'Version', value: 'version', width: '20%' },
-  { text: 'Description', value: 'description', width: '40%' },
+  { title: 'Date', value: 'date', width: '20%'},
+  { title: 'Name', value: 'name', width: '20%' },
+  { title: 'Version', value: 'version', width: '20%' },
+  { title: 'Description', value: 'description', width: '40%' },
 ])
 
 onMounted(async() => {
