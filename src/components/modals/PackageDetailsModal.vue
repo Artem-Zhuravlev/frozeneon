@@ -5,15 +5,25 @@
   >
     <v-card>
       <v-card-text>
-        <h3>{{ item.package.name }}</h3>
+        <h3
+          v-if="item?.package?.name"
+        >{{ item?.package?.name }}</h3>
         <h4
-          class="mb-3">
-          {{ item.package.author.name  }} | {{ item.package.author.email }}
+          v-if="item?.package?.author?.name | item?.package?.author?.email"
+          class="mb-3"
+        >
+          {{ item?.package?.author?.name  }} | {{ item?.package?.author?.email }}
         </h4>
-        <p class="mb-3">{{ item.package.description }}</p>
-        <div class="d-flex flex-wrap ga-2 mb-3">
+        <p
+          v-if="item?.package?.description"
+          class="mb-3"
+        >{{ item?.package?.description }}</p>
+        <div
+          v-if="item.package.keywords"
+          class="d-flex flex-wrap ga-2 mb-3"
+        >
           <div
-            v-for="(keyword, index) in item.package.keywords"
+            v-for="(keyword, index) in item?.package?.keywords"
             :key="index"
             class="pa-1 bg-deep-purple"
           >
