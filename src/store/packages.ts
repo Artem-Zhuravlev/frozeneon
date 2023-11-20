@@ -23,7 +23,6 @@ export const usePackagesStore = defineStore('packages', {
         this.isLoading = true;
         const { data: { objects } }: AxiosResponse = await getPackagesList(this.searchResult);
         this.packages = objects;
-        console.log(this.packages);
         this.isLoading = false;
 
       } catch (error) {
