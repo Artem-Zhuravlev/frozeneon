@@ -11,7 +11,7 @@ interface State {
 
 export const usePackagesStore = defineStore('packages', {
   state: (): State => ({
-    searchResult: '',
+    searchResult: 'bootstrap',
     isLoading: false,
     isError: false,
     packages: []
@@ -21,9 +21,9 @@ export const usePackagesStore = defineStore('packages', {
     async getPackages () {
       try {
         this.isLoading = true;
-        const { data: objects }: AxiosResponse<object[]> = await getPackagesList(this.searchResult);
-        console.log(objects);
+        const { data: { objects } }: AxiosResponse = await getPackagesList(this.searchResult);
         this.packages = objects;
+        console.log(this.packages);
         this.isLoading = false;
 
       } catch (error) {

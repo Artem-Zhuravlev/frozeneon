@@ -40,22 +40,13 @@
   </v-app-bar>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { watch } from 'vue';
-import { usePackagesStore } from '@/store/packages'
+import { usePackagesStore } from '@/store/packages';
 
-export default {
-  name: 'AppBar',
-  setup () {
-    const store = usePackagesStore();
+const store = usePackagesStore();
 
-    watch(() => store.searchResult, async () => {
-      await store.getPackages();
-    });
-
-    return {
-      store
-    }
-  }
-}
+watch(() => store.searchResult, async () => {
+  await store.getPackages();
+});
 </script>
